@@ -1,4 +1,4 @@
-package ch06Object;
+
 
 import java.util.Scanner;
 
