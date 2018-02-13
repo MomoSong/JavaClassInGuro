@@ -30,13 +30,11 @@ class Tv{
 		return color;
 	}
 	
-	
-	
-	
 	@Override
 	public String toString() {
 		return getClass().getName() 
-				+" [color=" + color +", Power= " + power 
+				+" [color=" + color 
+				+", Power= " + power 
 				+ ", channel=" + channel + "]";
 	}
 	
@@ -50,6 +48,7 @@ public class TvTest {
 		Tv t;
 		t = new Tv();
 //		t.channel = 7;
+		t.setChannel(7);
 //		t.channelDown();
 		System.out.println(t);
 //		System.out.println(t.toString());
