@@ -16,10 +16,22 @@ public class BoardDTO {
 	private String writeDate;
 	private int hit;
 	
+	{
+		//초기화 블럭
+		System.out.println("기본 초기화블럭");
+		no = 100;
+		
+	}
+	static {
+		System.out.println("static 초기화 블럭");
+		
+	}
+	
 	//생성자 선언
 	//생성을 먼저하고 값은 나중에 넣겠다.
 	public BoardDTO() {
-		
+		System.out.println("기본 생성자");
+		no=50;
 	}
 	
 	//데이터를 넣을 떄 데이터가 준비가 다 되어 있는 경우
@@ -34,11 +46,22 @@ public class BoardDTO {
 		this.hit = hit;
 	}
 		
+	//게시판 글쓰기 - 제목, 내용, 작성자만 입력
+	public BoardDTO(String title, String content, String writer) {
+		this(0, title, content, writer, null, 0);
+//		위의 생성자와 일부분 중복되서 주석처리하고 this()로 처리하기	
+//		super();
+//		this.title = title;
+//		this.content = content;
+//		this.writer = writer;
+	}
 	
 	
 	public int getNo() {
 		return no;
 	}
+	
+
 	public void setNo(int no) {
 		this.no = no;
 	}
