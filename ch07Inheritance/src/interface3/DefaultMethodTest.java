@@ -16,7 +16,6 @@ public class DefaultMethodTest {
 		MyInterface.method3();
 		System.out.println(MyInterface.name);
 	}
-
 }
 
 interface MyInterface{
