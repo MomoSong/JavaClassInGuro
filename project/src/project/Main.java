@@ -2,6 +2,8 @@ package project;
 
 import java.util.Scanner;
 
+import board.controller.BoardController;
+
 /*
  *
  * @author 송근모
@@ -41,6 +43,12 @@ public class Main {
 				
 			case "3":
 				System.out.println("게시판 입니다.");
+				//게시판처리를 위해서 컨트롤러 생성, 호출
+				//생성 -> new
+				BoardController boardController
+				 = new BoardController();
+				//메서드 호출해서 실행
+				boardController.selectMenu();
 				break;
 				
 			case "0":
