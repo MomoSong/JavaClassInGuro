@@ -1,6 +1,11 @@
 package board.controller;
 
+import java.util.List;
+
+import board.service.BoardListService;
+import dto.BoardDTO;
 import project.Main;
+import view.board.BoardPrint;
 
 /*
  * 
@@ -24,6 +29,19 @@ public class BoardController {
 			switch (menu) {
 			case "1":
 				System.out.println("게시판 리스트");
+				//리스트를 처리하는 객체 생성, 호출
+				//객체 생성
+				BoardListService boardListService 
+				 = new BoardListService();
+				
+				//메서드를 호출해서 실행해서 데이터 가져오기
+				List<BoardDTO> list = boardListService.process();
+				
+				BoardPrint boardPrint = new BoardPrint();
+				boardPrint.list(list);
+				//가져온 데이터를 출력하기
+				
+				
 				break;
 			case "2":
 				System.out.println("게시판 글 보기");
