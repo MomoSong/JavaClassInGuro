@@ -3,6 +3,7 @@ package board.controller;
 import java.util.List;
 
 import board.service.BoardListService;
+import board.service.BoardViewService;
 import dto.BoardDTO;
 import project.Main;
 import view.board.BoardPrint;
@@ -15,7 +16,7 @@ import view.board.BoardPrint;
 public class BoardController {
 	public void selectMenu() {
 		System.out.println("BoardController.selectMenu()");
-
+		
 		while (true) {
 			// 메뉴 출력
 			System.out.println("1.List 2.View 3.Write");
@@ -31,7 +32,8 @@ public class BoardController {
 				System.out.println("게시판 리스트");
 				//리스트를 처리하는 객체 생성, 호출
 				//객체 생성
-				BoardListService boardListService 
+				
+				BoardListService boardListService
 				 = new BoardListService();
 				
 				//메서드를 호출해서 실행해서 데이터 가져오기
@@ -44,7 +46,20 @@ public class BoardController {
 				
 				break;
 			case "2":
+				//글번호에 맞는 게시판의 데이터를 가져온다. BoardDTO
+				//객체를 생성하고 호출한다. controller -> service -> dao
 				System.out.println("게시판 글 보기");
+				System.out.println("글 번호를 누르세요:");
+				String no = Main.scanner.nextLine();
+				
+				BoardViewService boardViewService =
+						new BoardViewService();
+				
+				BoardDTO boardDTO
+					= boardViewService.process(Integer.parseInt(no));
+				BoardPrint viewPrint = new BoardPrint();
+				viewPrint.view(boardDTO);
+				
 				break;
 			case "3":
 				System.out.println("게시판 글 쓰기");
