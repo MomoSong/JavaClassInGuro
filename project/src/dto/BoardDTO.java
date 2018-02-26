@@ -16,21 +16,21 @@ public class BoardDTO {
 	private String writeDate;
 	private int hit;
 	
-	{
-		//초기화 블럭
-		System.out.println("기본 초기화블럭");
-		no = 100;
-		
-	}
-	static {
-		System.out.println("static 초기화 블럭");
-		
-	}
+//	{
+//		//초기화 블럭
+//		System.out.println("기본 초기화블럭");
+//		no = 100;
+//		
+//	}
+//	static {
+//		System.out.println("static 초기화 블럭");
+//		
+//	}
 	
 	//생성자 선언
 	//생성을 먼저하고 값은 나중에 넣겠다.
 	public BoardDTO() {
-		System.out.println("기본 생성자");
+//		System.out.println("기본 생성자");
 		no=50;
 	}
 	
