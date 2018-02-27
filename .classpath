@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="ch01Hello/src"/>
+	<classpathentry kind="src" path="ch02Variable/src"/>
+	<classpathentry kind="src" path="ch03Operator/src"/>
+	<classpathentry kind="src" path="ch04IfFor/src"/>
+	<classpathentry kind="src" path="ch05Array/src"/>
+	<classpathentry kind="src" path="ch06Object/src"/>
+	<classpathentry kind="src" path="ch07Inheritance/src"/>
+	<classpathentry kind="src" path="ch08Exception/src"/>
+	<classpathentry kind="src" path="ch09Lang/src"/>
+	<classpathentry kind="src" path="ch10Date/src"/>
+	<classpathentry kind="src" path="java/src"/>
+	<classpathentry kind="src" path="JavaTeamProject/src"/>
+	<classpathentry kind="src" path="project/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
