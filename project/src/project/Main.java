@@ -2,7 +2,7 @@ package project;
 
 import java.util.Scanner;
 
-import board.controller.BoardController;
+import boardController.BoardController;
 
 /*
  *
