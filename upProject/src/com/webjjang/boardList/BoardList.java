@@ -1,19 +1,19 @@
-package board.dao;
+package com.webjjang.boardList;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.BoardDTO;
+import com.webjjang.dto.BoardDTO;
+import com.webjjang.util.DBUtil;
 
-public class BoardDAO {
+public class BoardList {
 
 	// 오라클에 접속할 때 필요한 정보들
 	// 드라이버는 오라클사에서 제공한다 -> 찾아서 인식시켜야한다 : ojbdc6.jar
-	;
+
 	// 글리스트를 가져오는 메서드
 	public List<BoardDTO> list() {
 		System.out.println("BoardDAO.list");
@@ -28,7 +28,7 @@ public class BoardDAO {
 			// 1. 드라이버확인
 
 			// 2. 연결
-			Connection String;
+			con = DBUtil.getConnection();
 
 			// 3. sql
 			String sql = "SELECT no, title, writer, writedate," + " hit FROM board ORDER BY no DESC";
@@ -64,15 +64,8 @@ public class BoardDAO {
 		} finally {
 			try {
 				// 7. 객체 닫기
-				if (con != null) {
-					con.close();
-				}
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (rs != null) {
-					rs.close();
-				}
+				DBUtil.close(con, pstmt, rs);
+
 			} catch (Exception e) {
 				System.out.println("객체를 닫는 중 오류 발생");
 				e.printStackTrace();

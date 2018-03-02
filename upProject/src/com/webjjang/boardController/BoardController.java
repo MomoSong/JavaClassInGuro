@@ -1,12 +1,14 @@
-package boardController;
+package com.webjjang.boardController;
 
 import java.util.List;
 
-import board.service.BoardListService;
-import board.service.BoardViewService;
-import dto.BoardDTO;
-import project.Main;
-import view.board.BoardPrint;
+import com.webjjang.boardService.BoardListService;
+import com.webjjang.boardService.BoardViewService;
+import com.webjjang.dto.BoardDTO;
+import com.webjjang.util.InUtil;
+import com.webjjang.viewBoard.BoardPrint;
+
+
 
 /*
  * 메뉴를 보여주고 선택하면 처리한다.
@@ -16,15 +18,12 @@ import view.board.BoardPrint;
 public class BoardController {
 
 	public void selectMenu() {
-		System.out.println("BoardController.selectMenu()");
-		// 메뉴 선택
+//		System.out.println("BoardController.selectMenu()");
+		
 		while (true) {
-			// 메뉴 출력
-			System.out.println("1.List 2.View 3.Write");
-			System.out.println("4.Update 5.Delect 0.MainMenu");
-			System.out.print("메뉴선택 ->");
-
-			String menu = Main.scanner.nextLine();
+			String menu = InUtil.getMenu("1.List 2.View 3.Write"
+										+"4.Update 5.Delect 0.MainMenu",
+										"메뉴 선택"); 
 
 			BoardListService boardlistservice = new BoardListService();
 			List<BoardDTO> list;
@@ -33,20 +32,20 @@ public class BoardController {
 			// 메뉴선택
 			switch (menu) {
 			case "1":
-				System.out.println("게시판 리스트");
+//				System.out.println("게시판 리스트");
 				// 리스트를 처리하는 객체 생성, 호출
 				BoardPrint boardprit = new BoardPrint();
 				boardprit.list(list);
 				break;
 			case "2":
-				System.out.println("게시판 글보기");
-				int no = 2;
+//				System.out.println("게시판 글보기");
+				int no = InUtil.getIntWithCheck("글번호 입력");
 				// 글번호에 맞는 게시판의 데이터를 가져온다. BoardDTO
 				// 객체를 생성하고 호출한다. controller -> service ->data
-				BoardViewService boardviewservice = new BoardViewService();
-				BoardDTO boardPrint2 = boardviewservice.process(no);
-				BoardPrint boardprit3 = new BoardPrint();
-				boardprit3.view(boardPrint2);
+				BoardViewService boardViewService = new BoardViewService();
+				BoardDTO boardPrint2 = boardViewService.process(no);
+				BoardPrint boardPrint3 = new BoardPrint();
+				boardPrint3.view(boardPrint2);
 				break;
 			case "3":
 				System.out.println("게시판 글쓰기");
