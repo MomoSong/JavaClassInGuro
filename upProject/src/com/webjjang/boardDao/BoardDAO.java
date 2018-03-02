@@ -157,6 +157,46 @@ public class BoardDAO {
 				e.printStackTrace();
 			}
 		}
-
 	}
+	
+	//게시판 글쓰기 처리
+	public void write(BoardDTO boardDTO) {
+		Connection con = null; // 연결
+		PreparedStatement pstmt = null; // 처리문
+		
+		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성 할것
+		try {
+			//1. 드라이버 확인 //2. 연결
+			con = DBUtil.getConnection();
+			
+			//3. sql 작성
+			String sql = "INSERT INTO board(no, title, content, writer) "
+					+ " values(board_seq.nextval, ?, ?, ?)";
+
+			//4. 처리문 객체
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, boardDTO.getTitle()); 
+			pstmt.setString(2, boardDTO.getContent()); 
+			pstmt.setString(3, boardDTO.getWriter()); 
+			
+			//5. 실행 : UPDATE
+			//select 인 경우는 executeQuery() 실행
+			//그외 경우는 excuteUpdate() 실행
+			pstmt.executeUpdate();
+			
+			//6. 표시 -> 오류가 없으면 정상처리
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				DBUtil.close(con, pstmt);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
+	
 }

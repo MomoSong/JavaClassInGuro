@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.webjjang.boardService.BoardListService;
 import com.webjjang.boardService.BoardViewService;
+import com.webjjang.boardService.BoardWriteService;
 import com.webjjang.dto.BoardDTO;
 import com.webjjang.util.InUtil;
 import com.webjjang.viewBoard.BoardPrint;
@@ -49,6 +50,14 @@ public class BoardController {
 				break;
 			case "3":
 				System.out.println("게시판 글쓰기");
+				//오라클에 넣은 데이터를 생성해서 데이터를 채운다.
+				BoardDTO boardDTO1 = new BoardDTO(
+						InUtil.getMenu("제목"), 
+						InUtil.getMenu("내용"),
+						InUtil.getMenu("작성자"));
+				
+				BoardWriteService boardWriteService = new BoardWriteService();
+				boardWriteService.process(boardDTO1);
 				break;
 			case "4":
 				System.out.println("게시판 글수정");
