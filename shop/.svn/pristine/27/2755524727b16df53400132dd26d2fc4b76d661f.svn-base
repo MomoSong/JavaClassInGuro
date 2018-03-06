@@ -1,0 +1,18 @@
+package shop.java20;
+
+import shop.JavaInterface;
+
+public class JavaClass20 {
+	
+	public static void main(String[] args) {
+		JavaInterface javaInterface = new JavaInterface() {
+			
+			@Override
+			public void process() {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+	}
+
+}

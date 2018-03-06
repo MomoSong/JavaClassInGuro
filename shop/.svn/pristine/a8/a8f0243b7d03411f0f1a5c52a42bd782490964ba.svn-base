@@ -1,0 +1,7 @@
+package shop.java11;
+
+import shop.JavaInterface;
+
+public class JavaClass11 implements JavaInterface{
+	
+}

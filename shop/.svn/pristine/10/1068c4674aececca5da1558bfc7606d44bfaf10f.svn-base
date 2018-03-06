@@ -1,0 +1,7 @@
+package shop.java09;
+
+import shop.JavaInterface;
+
+public class JavaClass09 implements JavaInterface{
+
+}

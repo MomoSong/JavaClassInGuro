@@ -26,8 +26,8 @@ public class BoardDAO {
 
 		try {
 			// 1. 드라이버확인
-
 			// 2. 연결
+			
 			con = DBUtil.getConnection();
 
 			// 3. sql

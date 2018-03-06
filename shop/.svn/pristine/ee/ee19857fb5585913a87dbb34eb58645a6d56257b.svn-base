@@ -1,0 +1,7 @@
+package shop.java18;
+
+import shop.JavaInterface;
+
+public class JavaClass18 {
+//	JavaInterface javaInterface = new JavaClass18();
+}
