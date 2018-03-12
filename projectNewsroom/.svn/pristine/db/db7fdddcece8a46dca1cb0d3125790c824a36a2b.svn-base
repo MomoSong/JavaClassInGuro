@@ -1,0 +1,12 @@
+package com.webjjang.board.service;
+
+import com.webjjang.board.dao.NadoNewsBoardDAO;
+import com.webjjang.board.dto.NadoNewsBoardDTO;
+
+public class NadoNewsViewService {
+	public NadoNewsBoardDTO process(int no){
+		NadoNewsBoardDAO boardDAO = new NadoNewsBoardDAO();
+		boardDAO.increase(no);
+		return boardDAO.view(no);
+	}
+}

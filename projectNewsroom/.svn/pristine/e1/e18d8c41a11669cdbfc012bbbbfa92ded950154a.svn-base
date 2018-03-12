@@ -1,0 +1,17 @@
+package com.webjjang.board.service;
+
+import com.webjjang.board.dao.MemDAO;
+import com.webjjang.board.dto.MemberDTO;
+
+public class MemLoginService {
+
+	public MemberDTO process(String id, String pw) {
+		// TODO Auto-generated method stub
+		System.out.println("BoardLoginService.process()");
+		MemberDTO memberDTO = null;
+		MemDAO memDAO = new MemDAO();
+		memberDTO = memDAO.login(id,pw);
+		return memberDTO;
+	}
+
+}

@@ -1,0 +1,119 @@
+package com.webjjang.board.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.webjjang.board.dto.NadoNewsBoardDTO;
+import com.webjjang.util.DBUtil;
+
+public class NadoNewsBoardDAO {
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	private String sql;
+	private NadoNewsBoardDTO boardDTO;
+	private List<NadoNewsBoardDTO> list;
+
+	public void setSql(String sql) {
+		this.sql = sql;
+	}
+
+	public String getSql() {
+		return sql;
+	}
+
+	public List<NadoNewsBoardDTO> list() throws Exception {
+
+		setSql("SELECT no, title, writer, to_char(writedate, 'yyyy-mm-dd') writedate, hit "
+				+ " FROM nadoboard ORDER BY no DESC");
+
+		conn = DBUtil.getConnection();
+		pstmt = conn.prepareStatement(getSql());
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			if (list == null) {
+				list = new ArrayList<>();
+			}
+			boardDTO = new NadoNewsBoardDTO(rs.getInt("no"), rs.getString("title"), rs.getString("writer"),
+					rs.getString("writedate"), rs.getInt("hit"));
+
+			list.add(boardDTO);
+		}
+		DBUtil.close(conn, pstmt, rs);
+		return list;
+	}
+
+	public NadoNewsBoardDTO view(int no) throws Exception {
+
+		conn = DBUtil.getConnection();
+		setSql("SELECT no, title, content, writer, to_char(writedate, 'yyyy-mm-dd') writedate, hit FROM nadoboard WHERE no = ?");
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, no);
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			boardDTO = new NadoNewsBoardDTO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
+					rs.getString("writer"), rs.getString("writedate"), rs.getInt("hit"));
+		}
+
+		DBUtil.close(conn, pstmt);
+		return boardDTO;
+	}
+
+	public void increase(int no) throws Exception {
+
+		conn = DBUtil.getConnection();
+		setSql("UPDATE nadoboard set hit = hit + 1 where no = ?");
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, no);
+		pstmt.executeUpdate();
+
+		DBUtil.close(conn, pstmt);
+	}
+
+	public void write(String title, String content, String writer) throws Exception {
+
+		conn = DBUtil.getConnection();
+		setSql("INSERT INTO nadoboard(no, title, content, writer, writedate) "
+				+ " VALUES(nadoboard_seq.nextval, ?, ?, ?, SYSDATE)");
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, title);
+		pstmt.setString(2, content);
+		pstmt.setString(3, writer);
+		pstmt.executeUpdate();
+
+		DBUtil.close(conn, pstmt);
+
+	}
+
+	public void update(String title, String content, String writer, int no) throws Exception {
+
+		conn = DBUtil.getConnection();
+		setSql("UPDATE nadoboard SET title = ?, content = ?, writer = ? WHERE no = ?");
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, title);
+		pstmt.setString(2, content);
+		pstmt.setString(3, writer);
+		pstmt.setInt(4, no);
+		pstmt.executeUpdate();
+
+		DBUtil.close(conn, pstmt);
+
+	}
+
+	public void delete(int no) throws Exception {
+
+		conn = DBUtil.getConnection();
+		setSql("DELETE FROM nadoboard WHERE no = ?");
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, no);
+		pstmt.executeUpdate();
+		DBUtil.close(conn, pstmt);
+
+	}
+
+}

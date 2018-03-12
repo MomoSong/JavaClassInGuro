@@ -1,0 +1,10 @@
+package com.webjjang.board.service;
+
+import com.webjjang.board.dao.NadoNewsBoardDAO;
+
+public class NadoNewsDeleteService {
+	public void delete(int no) throws Exception {
+		NadoNewsBoardDAO nadoNewsBoardDAO = new NadoNewsBoardDAO();
+		nadoNewsBoardDAO.delete(no);
+	}
+}

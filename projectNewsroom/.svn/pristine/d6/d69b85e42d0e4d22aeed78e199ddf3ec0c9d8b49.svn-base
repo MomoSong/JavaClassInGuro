@@ -1,0 +1,23 @@
+package com.webjjang.comment.service;
+
+import com.webjjang.board.controller.ProcessInterface;
+import com.webjjang.comment.dao.QNACommentDAO;
+import com.webjjang.comment.dto.QNACommentDTO;
+
+public class QNACommentWriteService implements ProcessInterface {
+	
+	@Override
+	public Object process(Object obj) throws Exception{
+		// TODO Auto-generated method stub
+		return null;
+	}
+		
+	public void process(String content, String writer, int qno) throws Exception {
+		System.out.println("QNACommentWriteService.process()");
+		
+		// list에 데이터를 가져와서 채우는 프로그램을 작성, 채운 것을 리턴하여 넘긴다.
+		// 객체를 생성하고, 호출한다.
+		QNACommentDAO qnaCommentDAO = new QNACommentDAO();
+		qnaCommentDAO.write(content, writer, qno);
+	}
+}

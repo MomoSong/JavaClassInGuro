@@ -1,0 +1,43 @@
+package com.webjjang.board.controller;
+
+import com.webjjang.board.dto.MemberDTO;
+import com.webjjang.board.service.MemLoginService;
+import com.webjjang.main.SelectMenuInterface;
+import com.webjjang.util.InUtil;
+import com.webjjang.util.OutUtil;
+
+public class LoginController implements SelectMenuInterface {
+
+	@Override
+	public void selectMenu() {
+		// TODO Auto-generated method stub
+		OutUtil.printTitle("회원관리 탭");
+		while (true) {
+			OutUtil.printMenu("1.로그인 하기\n2.회원가입하기\n0.이전메뉴", "/", 14);
+			String menu = InUtil.getMenu("메뉴를 선택하세요");
+			switch (menu) {
+			case "1":
+				MemLoginService boardLoginService = new MemLoginService();
+				String id = InUtil.getMenu("아이디를 입력하세요.");;
+				String pw = InUtil.getMenu("비밀번호를 입력하세요.");
+				MemberDTO memberDTO = boardLoginService.process(id,pw);
+				if (memberDTO != null) {
+					System.out.println(memberDTO.getName()+"님 환영합니다!");
+					MemManageController boardMemController = new MemManageController();
+					boardMemController.selectMenu();
+					break;
+				} else if(memberDTO == null) {break;}
+			case "2":
+				break;
+			case "0":
+				return;
+
+			default:
+				System.out.println("다시 입력하세요.");
+				break;
+			}
+		} // end of while;
+
+	}// end of selectMenu()
+
+}// end of class BoardController

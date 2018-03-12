@@ -10,9 +10,9 @@ public class DBUtil {
 	private static String driver = "oracle.jdbc.driver.OracleDriver"; // 오라클사에서 제공
 
 	// server 정보
-	private static String server = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static String uid = "JAVA00";
-	private static String upw = "JAVA00";
+	private static String server = "jdbc:oracle:thin:@401PC-B5:1521:orcl";
+	private static String uid = "newsroom";
+	private static String upw = "newsroom";
 
 	static { // 1.드라이버 확인 --> static으로 자동 초기화 블록 실행
 		try {

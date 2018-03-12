@@ -1,6 +1,6 @@
 package dto;
 
-public class BoardDTO {
+public class NadoNewsBoardDTO {
 	private int no;
 	private String title;
 	private String content;
@@ -8,11 +8,11 @@ public class BoardDTO {
 	private String writeDate;
 	private int hit;
 
-	public BoardDTO(){
+	public NadoNewsBoardDTO(){
 		super();
 	}
 	
-	public BoardDTO(int no, String title, String content, String writer, String writeDate, int hit) {
+	public NadoNewsBoardDTO(int no, String title, String content, String writer, String writeDate, int hit) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -22,7 +22,7 @@ public class BoardDTO {
 		this.hit = hit;
 	}
 
-	public BoardDTO(int no, String title, String writer, String writeDate, int hit) {
+	public NadoNewsBoardDTO(int no, String title, String writer, String writeDate, int hit) {
 		super();
 		this.no = no;
 		this.title = title;

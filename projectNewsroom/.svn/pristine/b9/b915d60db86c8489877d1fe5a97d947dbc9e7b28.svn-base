@@ -1,0 +1,55 @@
+package com.webjjang.board.controller;
+
+import java.util.List;
+
+import com.webjjang.board.dto.NewsDTO;
+import com.webjjang.board.service.NewsBoardListService;
+import com.webjjang.util.InUtil;
+import com.webjjang.view.board.NewsPrint;
+
+public class NewsController {
+	public void selectMenu() {
+		System.out.println("NewsController.selectMenu()");
+		
+		//메뉴 출력 -> 입력과 처리 반복
+		while(true) {
+			String menu = InUtil.getMenu( "1.뉴스리스트 "
+										+ "2.뉴스 보기 "
+										+ "3.뉴스 쓰기 "
+										+ "4.뉴스 수정 "
+										+ "5.뉴스 삭제 "
+										+ "0.이전메뉴","메뉴입력");
+		switch(menu) {
+		case "1":
+			System.out.println("뉴스 리스트입니다.");
+			NewsBoardListService newsboardListService
+			= new NewsBoardListService();
+			List<NewsDTO> list 
+			= newsboardListService.process();
+			NewsPrint newsPrint = new NewsPrint();
+			newsPrint.list(list);
+			break;
+		case "2":
+			System.out.println("뉴스 보기입니다.");	
+			break;
+		case "3":
+			System.out.println("뉴스 쓰기입니다.");	
+			break;
+		case "4":
+			System.out.println("뉴스 수정입니다.");	
+			break;
+		case "5":
+			System.out.println("뉴스 삭제입니다.");
+			break;
+		case "0":
+			System.out.println("이전메뉴 입니다.");
+			return;
+		default:
+			System.out.println("잘못된 메뉴를 선택하셨습니다.");
+			break;	
+		}
+			
+		}
+			
+	}
+}

@@ -3,18 +3,20 @@ package board.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import board.dao.NadoNewsCrawlingDAO;
 import board.print.NadoNewsBoardPrint;
+import board.service.NadoNewsCrawlingService;
 import board.service.NadoNewsDeleteService;
 import board.service.NadoNewsListService;
 import board.service.NadoNewsUpdateService;
 import board.service.NadoNewsViewService;
 import board.service.NadoNewsWriteService;
 import board.util.InUtil;
-import dto.BoardDTO;
+import dto.NadoNewsBoardDTO;
 
 public class NadoNewsController {
-	private List<BoardDTO> list;
-	private BoardDTO boardDTO;
+	private List<NadoNewsBoardDTO> list;
+	private NadoNewsBoardDTO boardDTO;
 	private NadoNewsBoardPrint boardPrint;
 	private int no;
 	private String title;
@@ -22,17 +24,20 @@ public class NadoNewsController {
 	private String writer;
 
 	public void selectMenu(){
+		
+				
 		while(true){			
 			String menu = InUtil.getMenu("1.기사 목록 "
 								+"2.기사 읽기 "
 								+"3.기사 쓰기 "
 								+"4.기사 수정 "
 								+"5.기사 삭제 "
+								+"6.기사 로드 "
 								+"0.이전 메뉴", "메뉴를 입력하세요 >");			
 			switch (menu) {
 			case "1":
 				NadoNewsListService nadoNewsListService = new NadoNewsListService();
-				if (list == null) list = new ArrayList<BoardDTO>();
+				if (list == null) list = new ArrayList<NadoNewsBoardDTO>();
 				list = nadoNewsListService.process();
 				if(boardPrint == null) boardPrint = new NadoNewsBoardPrint();
 				boardPrint.listPrint(list);
@@ -41,7 +46,7 @@ public class NadoNewsController {
 			case "2":
 				no = InUtil.getInt("기사 번호를 입력하세요 >");
 				NadoNewsViewService nadoNewsViewService = new NadoNewsViewService();
-				if (boardDTO == null) boardDTO = new BoardDTO();
+				if (boardDTO == null) boardDTO = new NadoNewsBoardDTO();
 				boardDTO = nadoNewsViewService.process(no);
 				if(boardPrint == null) boardPrint = new NadoNewsBoardPrint();
 				boardPrint.viewPrint(boardDTO);
@@ -72,6 +77,12 @@ public class NadoNewsController {
 				nadoNewsDeleteService.delete(no);
 				break;
 			
+			case "6":
+				NadoNewsCrawlingService nadoNewsCrawlingService = new NadoNewsCrawlingService();
+				nadoNewsCrawlingService.nadoNewsCrawling();
+				
+				break;
+				
 			case "0":
 				return;
 			

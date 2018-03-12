@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 public class DBUtil{
 	private static String driver = "oracle.jdbc.driver.OracleDriver";
-	private static String server = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static String uid = "JAVA00";
-	private static String upw = "JAVA00";
+	private static String server = "jdbc:oracle:thin:@401PC-B5:1521:orcl";
+	private static String uid = "newsroom";
+	private static String upw = "newsroom";
 	
 	static{
 		try {

@@ -1,0 +1,16 @@
+package com.webjjang.board.service;
+
+import com.webjjang.board.dao.NadoNewsCrawlingDAO;
+
+public class NadoNewsCrawlingService {
+	public void nadoNewsCrawling() {
+		NadoNewsCrawlingDAO nadoNewsCrawlingDAO = new NadoNewsCrawlingDAO();
+		
+		try {
+			nadoNewsCrawlingDAO.nadoNewsCrawling();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

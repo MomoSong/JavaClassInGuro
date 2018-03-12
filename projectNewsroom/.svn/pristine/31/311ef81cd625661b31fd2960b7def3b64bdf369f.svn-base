@@ -1,0 +1,49 @@
+package com.webjjang.board.controller;
+
+import java.util.List;
+
+import com.webjjang.board.dto.MemberDTO;
+import com.webjjang.board.service.MemListService;
+import com.webjjang.main.SelectMenuInterface;
+import com.webjjang.util.InUtil;
+import com.webjjang.util.OutUtil;
+import com.webjjang.view.board.MemPrint;
+
+public class MemManageController implements SelectMenuInterface{
+
+	public void selectMenu() {
+		// TODO Auto-generated method stub
+		while (true) {
+			OutUtil.printMenu("1.회원 명단 보기\n2.회원 찾기\n3.내 정보 보기\n4.내 정보 수정\n5.탈퇴\n0.이전메뉴", "/", 14);
+			String menu = InUtil.getMenu("메뉴를 선택하세요");
+			switch (menu) {
+			case "1":
+				System.out.println("회원 명단 보기입니다.");
+				MemListService boardListService = new MemListService();
+				List<MemberDTO> list = boardListService.process(null);
+				MemPrint boardPrint = new MemPrint();
+				boardPrint.list(list);
+				break;
+			case "2":
+				System.out.println("회원 찾기입니다.");
+				break;
+			case "3":
+				System.out.println("내 정보 보기입니다.");
+				break;
+			case "4":
+				System.out.println("내 정보 수정입니다.");
+				break;
+			case "5":
+				System.out.println("탈퇴하시겠습니까?(yes/no)");
+				break;
+			case "0":
+				return;
+
+			default:
+				System.out.println("잘못 입력하셨습니다.\n다시 입력하세요.");
+				break;
+			}
+		} // end of while;
+	}
+
+}

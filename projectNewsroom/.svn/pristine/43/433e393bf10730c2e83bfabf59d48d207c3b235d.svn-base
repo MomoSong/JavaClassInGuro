@@ -1,0 +1,19 @@
+package com.webjjang.board.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.webjjang.board.dao.NewsDAO;
+import com.webjjang.board.dto.NewsDTO;
+
+public class NewsBoardListService {
+	
+	public List<NewsDTO> process() {
+		System.out.println("NewsBoardListService.process()");
+		List<NewsDTO> list = new ArrayList<>();
+		NewsDAO newsDAO= new NewsDAO();
+		list = newsDAO.list();
+		return list;
+		
+	}
+}

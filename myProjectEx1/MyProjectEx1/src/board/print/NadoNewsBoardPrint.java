@@ -2,24 +2,24 @@ package board.print;
 
 import java.util.List;
 
-import dto.BoardDTO;
+import dto.NadoNewsBoardDTO;
 
 public class NadoNewsBoardPrint {
-	public void listPrint(List<BoardDTO> list){
+	public void listPrint(List<NadoNewsBoardDTO> list){
 		for(int i = 0; i < list.size(); i++){
 			printUtil(list.get(i));
 		}
 		
 	}
 	
-	public void viewPrint(BoardDTO boardDTO){
+	public void viewPrint(NadoNewsBoardDTO boardDTO){
 		printUtil(boardDTO);
 		System.out.println("-----------------------------------------");
 		System.out.println(boardDTO.getContent());
 		System.out.println("-----------------------------------------");
 	}
 	
-	private void printUtil(BoardDTO boardDTO){
+	private void printUtil(NadoNewsBoardDTO boardDTO){
 		System.out.printf("[%3d][%20s][%5s][%10s][%3d]\n"
 				, boardDTO.getNo()
 				, boardDTO.getTitle()

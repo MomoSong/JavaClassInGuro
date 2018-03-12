@@ -1,0 +1,20 @@
+package com.webjjang.board.service;
+
+import com.webjjang.board.controller.ProcessInterface;
+import com.webjjang.board.dao.MemBoardCommDAO;
+
+public class MemBoardCommWriteService implements ProcessInterface {
+
+	public void process(String title, int no) throws Exception {
+		// TODO Auto-generated method stub
+		MemBoardCommDAO boardCommDAO = new MemBoardCommDAO();
+		boardCommDAO.write(title, no);
+	}
+
+	@Override
+	public Object process(Object obj) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.webjjang.board.service;
+
+import java.sql.SQLException;
+
+import com.webjjang.board.dao.NewsDAO;
+
+public class NewsDeleteService {
+
+	public void delete(int no) throws SQLException {
+		// TODO Auto-generated method stub
+		NewsDAO newsDAO = new NewsDAO();
+		newsDAO.delete(no);
+	}
+
+}

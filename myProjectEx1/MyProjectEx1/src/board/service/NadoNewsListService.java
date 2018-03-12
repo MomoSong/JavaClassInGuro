@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import board.dao.NadoNewsBoardDAO;
-import dto.BoardDTO;
+import dto.NadoNewsBoardDTO;
 
 public class NadoNewsListService {
-	List<BoardDTO> list = new ArrayList<BoardDTO>();
+	List<NadoNewsBoardDTO> list = new ArrayList<NadoNewsBoardDTO>();
 	
-	public List<BoardDTO> process(){
+	public List<NadoNewsBoardDTO> process(){
 		NadoNewsBoardDAO boardDAO = new NadoNewsBoardDAO();
 		list = boardDAO.list();
 		return list;

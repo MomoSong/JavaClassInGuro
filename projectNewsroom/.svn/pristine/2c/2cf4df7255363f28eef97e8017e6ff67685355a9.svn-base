@@ -1,0 +1,19 @@
+package com.webjjang.board.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.webjjang.board.dao.NadoNewsBoardDAO;
+import com.webjjang.board.dto.NadoNewsBoardDTO;
+
+
+
+public class NadoNewsListService {
+	List<NadoNewsBoardDTO> list = new ArrayList<NadoNewsBoardDTO>();
+	
+	public List<NadoNewsBoardDTO> process(){
+		NadoNewsBoardDAO boardDAO = new NadoNewsBoardDAO();
+		list = boardDAO.list();
+		return list;
+	}
+}
