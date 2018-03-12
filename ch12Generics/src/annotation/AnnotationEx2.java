@@ -1,5 +1,7 @@
 package annotation;
 
+import java.util.ArrayList;
+
 public class AnnotationEx2 {
 	public static void main(String[] args) {
 		//예전에 작성된 소스
@@ -7,6 +9,9 @@ public class AnnotationEx2 {
 		nc.oldField = 10;
 		System.out.println(nc.getOldField());
 		
+		@SuppressWarnings({"rawtypes", "unchecked"})
+		ArrayList<NewClass> list = new ArrayList();
+		list.add(nc);
 		
 		
 	}
@@ -19,7 +24,9 @@ class NewClass{
 	int getNewField() {
 		return newField;
 	}
+	@Deprecated
 	int oldField;
+	@Deprecated
 	int getOldField() {
 		return oldField;
 	}
