@@ -6,6 +6,7 @@ public class ThreadEx1 {
 		ThreadEx1_1 t1 = new ThreadEx1_1();
 
 		Runnable r = new ThreadEx1_2();
+		//쓰레드를 생성하면서 Runnable을 넣어준다.
 		Thread t2 = new Thread(r);
 		t1.setPriority(3);
 		t2.setPriority(7);
@@ -35,7 +36,10 @@ class ThreadEx1_1 extends Thread {
 }
 
 // Runnable 인터페이스를 상속 받아서 Thread를 생성할 때 넣어준다. 
+// 이미 한개의 클래스를 상속 받고 있는 경우 다중 상속이 불가능하므로 Runnable 인터페이스를 상속받게 해서
+// 쓰레드를 생성할 때 넣어준다.
 class ThreadEx1_2 implements Runnable {
+	
 	public void run() {
 		for (int i = 0; i < 5; i++) {
 			System.out.println(Thread.currentThread().getName());
