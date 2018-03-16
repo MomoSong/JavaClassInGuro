@@ -1,0 +1,46 @@
+package file;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileEx3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String path = "d:\\upload\\board";
+		File f = new File(path);
+		if(f.exists())System.out.println("존재한다.");
+		else {
+			System.out.println("존재안함.");
+			// 상위 폴더가 없으면 mkdir()로 폴더를 만들 수 없음
+			System.out.println((f.mkdir())?"폴더가 생성되었습니다."
+					:"폴더가 생성되지 않았습니다.");
+			// 상위 폴더가 없으면 상위폴더 까지 만든다. mkdirs()
+			System.out.println((f.mkdirs())?"폴더가 생성되었습니다."
+					:"폴더가 생성되지 않았습니다.");
+			
+		}
+	} // end of main()
+	
+	public static void copy(String source, String target)
+			throws IOException {
+
+		//파일을 읽어올 객체를 생성
+		FileInputStream fis = new FileInputStream(source);
+		FileOutputStream fos = new FileOutputStream(target);
+		int data = 0;// 데이터를 읽어서 넣어주는 임시 변수.
+		
+		while ((data = fis.read()) != -1) {
+			char c =(char)data;
+//			System.out.print(c);
+			fos.write(c);
+		}
+		System.out.println("파일쓰기 성공");
+		fis.close();fos.close();
+	} // end of copy()
+
+
+}
