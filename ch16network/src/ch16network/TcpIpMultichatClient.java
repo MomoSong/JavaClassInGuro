@@ -8,18 +8,23 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class TcpIpMultichatClient {
+
 	public static void main(String args[]) {
-		if (args.length != 1) {
-			System.out.println("USAGE: java TcpIpMultichatClient 대화명");
-			System.exit(0);
-		}
+		// if (args.length != 1) {
+		// System.out.println("USAGE: java TcpIpMultichatClient 대화명");
+		// System.exit(0);
+		// }
 
 		try {
-			String serverIp = "127.0.0.1";
+			String serverIp = "192.168.137.71";
+			// String serverIp = "127.0.0.1";
 			// 소켓을 생성하여 연결을 요청한다.
+			Scanner scanner = new Scanner(System.in);
+			String name = scanner.nextLine();
+			scanner.close();
 			Socket socket = new Socket(serverIp, 7777);
 			System.out.println("서버에 연결되었습니다.");
-			Thread sender = new Thread(new ClientSender(socket, args[0]));
+			Thread sender = new Thread(new ClientSender(socket, name));
 			Thread receiver = new Thread(new ClientReceiver(socket));
 
 			sender.start();
@@ -55,6 +60,8 @@ public class TcpIpMultichatClient {
 					out.writeUTF("[" + name + "]" + scanner.nextLine());
 				}
 			} catch (IOException e) {
+			} finally {
+				scanner.close();
 			}
 		} // run()
 	} // ClientSender
